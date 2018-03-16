@@ -6,7 +6,7 @@ public:
   virtual real_t getHeight() const = 0;
 };
 
-class Cylinder_DH {
+class Cylinder_DH : public Cylinder {
 protected:
   real_t diameter;
   real_t hiratio;
