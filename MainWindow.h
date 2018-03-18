@@ -4,6 +4,7 @@
 #include "MapView.h"
 #include "VesselView.h"
 #include "OrbiteeData.h"
+#include "GeneralVessel.h"
 
 class MainWindow : public GLUTWindow {
 private:
@@ -14,10 +15,21 @@ private:
 	OrbitInfo orbitInfo;
 	Orbit_APZ orbitAPZ;
 
+	class InputAccRate : public VirInputf {
+public:
+		InputAccRate() {
+			set(0);
+		}
+		virtual void set(const real_t &t) override {
+			VirInputf::set(std::min(1.0f, std::max(0.0f, t)));
+		}
+	} inputAccRate;
+
 	std::vector<OrbiterM> orbitees;
 	OrbiteeData orbiteeData;
 
 	bool paused;
+	int speedRate;
 
 public:
 	MainWindow();

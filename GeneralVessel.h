@@ -1,10 +1,8 @@
 #pragma once
 
-#include <algorithm>
 #include "BasicVessel.h"
 
 class GeneralVessel : public BasicVessel {
-//private:
 public:
 	real_t fuel;
 
@@ -15,14 +13,16 @@ public:
 		, fuel(fuel)
 	{}
 
-	virtual real_t getMass() const override {
-		return 1.0f + 0.5f * fuel;
+	virtual real_t getMaxAcc() const {
+		return 0.5f;
 	}
 
-	virtual real_t setAccRate(real_t _accRate) override {
-		const real_t maxAcc = 0.5f;
-		_accRate = std::min(maxAcc, std::max(0.0f, _accRate));
-		BasicVessel::setAccRate(_accRate);
+	virtual real_t getMaxFuel() const {
+		return 1.2f;
+	}
+
+	virtual real_t getMass() const override {
+		return 1.0f + 0.5f * fuel;
 	}
 
 protected:

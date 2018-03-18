@@ -1,7 +1,8 @@
 #pragma once
 
 #include "GLView.h"
-#include "GeneralVessel.h"
+
+class GeneralVessel;
 
 class VesselView : public GLView {
 private:

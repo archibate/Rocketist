@@ -7,5 +7,5 @@ void BasicVessel::accelerateByUpdate(real_t df) {
 void BasicVessel::updatePosvel(real_t dt) {
 	OrbiterA::updatePosvel(dt);
 	if (accRate != 0)
-		accelerateByUpdate(accRate * dt);
+		accelerateByUpdate(*accRate * dt);
 }

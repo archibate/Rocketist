@@ -17,10 +17,10 @@ void FutureTrackRender::render() {
 			obteData.updatePosvels(dt);
 		}
 		OrbitRender::drawEllipse(ves.pos, 0.02f, 0.02f,
-				GLColor3f(0.9f, 0.2f, 0.8f), 1.5f);
+				GLColor3f(0.9f, 0.2f, 0.8f), 1.3f);
 		for (const auto &obte: obtes) {
 			OrbitRender::drawEllipse(obte.pos, 0.02f, 0.02f,
-					GLColor3f(0.5f, 0.3f, 0.6f), 1.5f);
+					GLColor3f(0.5f, 0.3f, 0.6f), 1.3f);
 		}
 	}
 }

@@ -1,3 +1,4 @@
+#include <iostream>
 #include "MapView.h"
 #include "BasicVessel.h"
 #include "OrbitRender.h"
@@ -44,7 +45,7 @@ void MapView::onRender() {
 	OrbitRender::drawEllipse(orbiter.pos + dir, 0.02f, 0.02f,
 			GLColor3f(0.9f, 1.0f, 0.2f), 2.0f);
 
-	if (orbiter.getAccRate() != 0) {
+	if (*orbiter.accRate != 0) {
 		OrbitRender::drawEllipse(orbiter.pos - dir, 0.02f, 0.02f,
 				GLColor3f(1.0f, 0.5f, 0.1f), 2.0f);
 	}
