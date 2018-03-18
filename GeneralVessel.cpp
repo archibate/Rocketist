@@ -13,5 +13,5 @@ bool GeneralVessel::burnFuel(real_t df) {
 
 void GeneralVessel::accelerateByUpdate(real_t df) {
 	if (burnFuel(df))
-		Vessel::accelerateByUpdate(df);
+		BasicVessel::accelerateByUpdate(df);
 }

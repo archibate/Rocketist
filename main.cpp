@@ -6,16 +6,7 @@
 #include "MapView.h"
 #include "VesselView.h"
 #include "OrbiteeData.h"
-
-template <typename T>
-std::ostream &operator<<(std::ostream &out, const Vector2<T> &v) {
-	return out << '(' << v.x << ',' << v.y << ')';
-}
-
-template <typename T>
-std::ostream &operator<<(std::ostream &out, const Vector3<T> &v) {
-	return out << '(' << v.x << ',' << v.y << ',' << v.z << ')';
-}
+#include "VectorIOStream.h"
 
 class MainWindow : public GLUTWindow {
 private:
@@ -83,9 +74,17 @@ protected:
 		} else if (key == ' ') {
 			paused = !paused;
 		} else if (key == 'i') {
-			mapview.lengthFutureTrack += 50;
+			mapview.futureTrack.length += 50;
 		} else if (key == 'o') {
-			mapview.lengthFutureTrack -= 50;
+			mapview.futureTrack.length -= 50;
+		} else if (key == 'p') {
+			if (mapview.futureTrack.dt == 0.0025f) {
+				mapview.futureTrack.dt = 0.01f;
+				mapview.futureTrack.times = 4;
+			} else {
+				mapview.futureTrack.dt = 0.0025f;
+				mapview.futureTrack.times = 6;
+			}
 		}
 	}
 
@@ -93,9 +92,9 @@ protected:
 		if (paused)
 			return;
 
-		std::cout << orbiter.pos << " " << orbiter.vel << std::endl;
+		//std::cout << orbiter.pos << " " << orbiter.vel << std::endl;
 
-		auto dt = 0.005f;
+		auto dt = 0.0025f;
 		orbiter.updatePosvel(dt);
 		orbiteeData.updatePosvels(dt);
 	}

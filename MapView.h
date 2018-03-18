@@ -2,29 +2,28 @@
 
 #include <vector>
 #include "GLView.h"
-#include "Vessel.h"
+#include "FutureTrackRender.h"
+#include "BasicVessel.h"
 
 class OrbiterM;
+class Orbit_APZ;
 
 class MapView : public GLView {
 private:
 	const Orbit_APZ &orbitAPZ;
-	const Vessel &vessel;
+	const BasicVessel &orbiter;
 	const std::vector<OrbiterM> &orbitees;
-public:
-	int lengthFutureTrack;
 
 public:
-	MapView(const Orbit_APZ *orbitAPZ, const Vessel *vessel,
+	FutureTrackRender futureTrack;
+
+	MapView(const Orbit_APZ *orbitAPZ, const BasicVessel *orbiter,
 			const std::vector<OrbiterM> *orbitees)
 		: orbitAPZ(*orbitAPZ)
-		, vessel(*vessel)
+		, orbiter(*orbiter)
 		, orbitees(*orbitees)
-		, lengthFutureTrack(0)
+		, futureTrack(static_cast<const Orbiter *>(orbiter), orbitees)
 	{}
-
-private:
-	void plotFutureTrack();
 
 public:
 	virtual void onSetup() override;

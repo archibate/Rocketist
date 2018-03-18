@@ -1,9 +1,9 @@
 #pragma once
 
 #include <algorithm>
-#include "Vessel.h"
+#include "BasicVessel.h"
 
-class GeneralVessel : public Vessel {
+class GeneralVessel : public BasicVessel {
 //private:
 public:
 	real_t fuel;
@@ -11,7 +11,7 @@ public:
 public:
 	GeneralVessel() {}
 	GeneralVessel(const OrbitInfo &orbit, real_t angle, real_t fuel)
-		: Vessel(orbit, angle)
+		: BasicVessel(orbit, angle)
 		, fuel(fuel)
 	{}
 
@@ -22,7 +22,7 @@ public:
 	virtual real_t setAccRate(real_t _accRate) override {
 		const real_t maxAcc = 0.5f;
 		_accRate = std::min(maxAcc, std::max(0.0f, _accRate));
-		Vessel::setAccRate(_accRate);
+		BasicVessel::setAccRate(_accRate);
 	}
 
 protected:

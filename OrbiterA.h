@@ -11,6 +11,14 @@ public:
 		: Orbiter(orbit)
 		, angle(angle)
 	{}
+	OrbiterA(const Orbiter &orbiter, real_t angle)
+		: Orbiter(orbiter)
+		, angle(angle)
+	{}
+	OrbiterA(const Vector2f &pos, const Vector2f &vel, real_t angle)
+		: Orbiter(pos, vel)
+		, angle(angle)
+	{}
 
 	Vector2f getDirection() const {
 		return Vector2f(std::cos(M_PI / 180 * angle),
