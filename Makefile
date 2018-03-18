@@ -1,5 +1,5 @@
 TARGET=Orbiter
-SOURCES=main.cpp GLUTWindow.cpp MapView.cpp FutureTrackRender.cpp VesselView.cpp Orbiter.cpp OrbiteeData.cpp OrbitRender.cpp OpenGL3D.cpp OrbitInfo.cpp BasicVessel.cpp GeneralVessel.cpp
+SOURCES=main.cpp MainWindow.cpp GLUTWindow.cpp MapView.cpp FutureTrackRender.cpp VesselView.cpp Orbiter.cpp OrbiteeData.cpp OrbitRender.cpp OpenGL3D.cpp OrbitInfo.cpp BasicVessel.cpp GeneralVessel.cpp
 LDFLAGS+=-lGL -lGLU -lglut
 
 run: $(TARGET)
